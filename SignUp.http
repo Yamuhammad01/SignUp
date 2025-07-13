@@ -1,0 +1,25 @@
+@SignUp_HostAddress = http://localhost:5051
+
+GET {{SignUp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+POST https://localhost:7156/api/Users/signup
+    Content-Type: application/json
+
+    {
+        "Username": "testuser",
+        "Email": "testuser@example.com",
+        "Password": "password123"
+    }
+###
+POST https://localhost:7156/api/Users/signup
+    Content-Type: application/json
+
+    {
+        "Username": "testuser",
+        "Email": "testuser@example.com",
+        "Password": "password123"
+    }
+    
+    
