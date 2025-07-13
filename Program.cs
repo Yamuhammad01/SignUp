@@ -17,7 +17,7 @@ builder.Services.AddDbContext<UsersDbContext>(options =>
 builder.Services.AddScoped<IUserService, UserService>();
 
 // Add services to the container.
-builder.Services.AddCors(options =>
+/*builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", builder =>
     {
@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod()
                .AllowAnyHeader();
     });
-});
+});*/
 
 
 
@@ -51,7 +51,11 @@ if (app.Environment.IsDevelopment())
 }
 // Use CORS policy
 app.UseCors("AllowSpecificOrigins");
-app.UseHttpsRedirection();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthorization();
 
