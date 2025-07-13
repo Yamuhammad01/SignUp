@@ -1,6 +1,6 @@
-﻿using SignUp.DbContext;
-using SignUp.Models;
+﻿using SignUp.Models;
 using BCrypt.Net;
+using SignUp.DTO;
 
 namespace SignUp.Services
 {
@@ -11,23 +11,21 @@ namespace SignUp.Services
         {
             _context = context;
         }
-        public async Task<string> SignUpAsync(UserEntites userInput)
+        public async Task<string> SignUpAsync(UsersDTO dto)
         {
-            // Hash the password before saving it to the database
-            userInput.Password = BCrypt.Net.BCrypt.HashPassword(userInput.Password);
+            var user = new UserEntites
+            {
+                Username = dto.Username,
+                Email = dto.Email,
+                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+            };
 
-            // Set the Id to 0 to avoid any potential security issues
+            await _context.Users.AddAsync(user); 
+            await _context.SaveChangesAsync();
 
-            userInput.Id = 0;
-            // Add the user to the database
-            _context.Users.Add(userInput);
-
-
-            // Save changes to the database
-            await _context.Users.SaveChangesAsync();
-            await Task.Delay(100); // Simulated async operation
-            return $"User {userInput.Username} signed up successfully!";
+            return $"User {dto.Username} signed up successfully!";
         }
+
     }
 
 }

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SignUp.DbContext;
+using SignUp;
 using SignUp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
