@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using SignUp;
 using SignUp.Services;
@@ -31,6 +32,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 
 var app = builder.Build();
+// Configure the HTTP request pipeline.
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -38,6 +44,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// Use forwarded headers to support reverse proxy scenarios
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+// Use CORS policy
 app.UseCors("AllowSpecificOrigins");
 app.UseHttpsRedirection();
 
