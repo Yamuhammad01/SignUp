@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SignUp.DTO;
 using SignUp.Models;
 using SignUp.Services;
 
@@ -14,7 +15,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("signup")]
-    public async Task<IActionResult> SignUp([FromBody] UserEntites userInput)
+    public async Task<IActionResult> SignUp([FromBody] UsersDTO userInput)
     {
         if (string.IsNullOrWhiteSpace(userInput.Username) ||
             string.IsNullOrWhiteSpace(userInput.Email) ||
