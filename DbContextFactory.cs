@@ -17,7 +17,7 @@ public class DbContextFactory : IDesignTimeDbContextFactory<UsersDbContext>
             .Build();
 
         // Get the connection string from appsettings.json and configure the DbContext
-        optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
 
         // Return a new instance of the UsersDbContext with the configured options
         return new UsersDbContext(optionsBuilder.Options);
