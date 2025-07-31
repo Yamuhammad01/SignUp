@@ -11,15 +11,14 @@ using SignUp;
 namespace SignUp.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20250729083420_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250731100249_FirstMigration")]
+    partial class FirstMigration
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
