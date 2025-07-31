@@ -11,8 +11,8 @@ using SignUp;
 namespace SignUp.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20250731100249_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20250731123226_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
