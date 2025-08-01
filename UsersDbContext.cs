@@ -9,7 +9,7 @@ namespace SignUp
     {
         public UsersDbContext(DbContextOptions<UsersDbContext> options) : base(options) { }
 
-        public DbSet<UserEntites> Users { get; set; } 
+        public DbSet<UserEntites> AppUsers { get; set; } 
 
 
     }

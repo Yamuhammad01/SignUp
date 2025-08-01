@@ -20,7 +20,7 @@ namespace SignUp.Services
                 Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
             };
 
-            await _context.Users.AddAsync(user); 
+            await _context.AppUsers.AddAsync(user); 
             await _context.SaveChangesAsync();
 
             return $"User {dto.Username} You have signed up successfully!";
