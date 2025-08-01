@@ -11,7 +11,7 @@ using SignUp;
 namespace SignUp.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20250801214044_InitialCreate")]
+    [Migration("20250801222509_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
